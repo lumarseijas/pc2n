@@ -84,5 +84,5 @@ if __name__ == "__main__":
     elif comando == "liberar":
         liberar()
         ####jh
-        
+        #cgfxxdtigfx
     
