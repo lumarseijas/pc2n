@@ -27,13 +27,13 @@ def crear_dockerfile():
     EXPOSE 5060
 
     # Comando para ejecutar la aplicación
-    CMD ["python3", "productpage_monolith.py", "5060"]
+    CMD ["python3", "productpage_monolith.py", "0.0.0.0", "5060"]
     """
     with open("Dockerfile", "w") as f:
         f.write(dockerfile_content)
     print("[DEBUG] Dockerfile creado correctamente.")
 
-def build_and_run():
+def crear():
     try:
         # Crear el Dockerfile
         crear_dockerfile()
@@ -75,12 +75,10 @@ def liberar():
     else:
         print("[INFO] No se encontró un archivo Dockerfile.")
 
-if __name__ == "__main__":
+comando = sys.argv[1]
 
-    comando = sys.argv[1]
-
-    if comando == "build":
-        build_and_run()
-    elif comando == "liberar":
-        liberar()
+if comando == "crear":
+    crear()
+elif comando == "liberar":
+    liberar()
     
