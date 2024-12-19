@@ -27,7 +27,7 @@ def crear_dockerfile():
     EXPOSE 5060
 
     # Comando para ejecutar la aplicación
-    CMD ["python3", "productpage_monolith.py", "0.0.0.0", "5060"]
+    CMD ["python3", "productpage_monolith.py", "5060"]
     """
     with open("Dockerfile", "w") as f:
         f.write(dockerfile_content)
@@ -40,14 +40,12 @@ def crear():
 
         # Crear la imagen de Docker
         print("[DEBUG] Construyendo la imagen de Docker...")
-        run(["docker", "build", "-t", "product-page/g24", "."], check=True)
+        os.system("sudo docker build -t product-page/g24 . ")
 
         # Ejecutar el contenedor
         print("[DEBUG] Ejecutando el contenedor de Docker...")
-        run([
-            "docker", "run", "--name", "product-page-g24", 
-            "-p", "5060:5060", "-e", "GROUP_NUM=24", "-d", "product-page/g24"
-        ], check=True)
+        os.system("sudo docker run --name product-page-g24 -p 5060:5060 -e GROUP_NUM=24 -d product-page/g24")  
+
         print("[DEBUG] Contenedor ejecutándose en el puerto 5060.")
     except CalledProcessError as e:
         print(f"[ERROR] Error durante la ejecución: {e}")
@@ -57,14 +55,14 @@ def liberar():
     print("[DEBUG] Liberando recursos...")
     try:
         # Detener y eliminar el contenedor
-        run(["docker", "stop", "product-page-g24"], check=True)
-        run(["docker", "rm", "product-page-g24"], check=True)
+        run(["sudo","docker", "stop", "product-page-g24"], check=True)
+        run(["sudo", "docker", "rm", "product-page-g24"], check=True)
     except CalledProcessError:
         print("[INFO] No se encontró un contenedor en ejecución.")
 
     try:
         # Eliminar la imagen de Docker
-        run(["docker", "rmi", "-f", "product-page/g24"], check=True)
+        run(["sudo","docker", "rmi", "-f", "product-page/g24"], check=True)
     except CalledProcessError:
         print("[INFO] No se encontró una imagen para eliminar.")
 
