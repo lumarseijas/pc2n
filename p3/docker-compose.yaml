@@ -1,0 +1,83 @@
+version: '3.7'
+
+services:
+  productpage:
+    build:
+      context: ./productpage
+      dockerfile: Dockerfile
+    environment:
+      - GROUP_NUMBER=24
+    ports:
+      - "9080:9080"
+    volumes:
+      -vol-productpage:/home/upm/volumes/productpage
+
+  details:
+    build:
+      context: ./details
+      dockerfile: Dockerfile
+    environment:
+      - SERVICE_VERSION=v1
+      - ENABLE_EXTERNAL_BOOK_SERVICE=true
+    volumes:
+      - vol-details:/home/upm/volumes/details
+    ports:
+      - "9080:9080"
+
+  reviewsv1:
+    build:
+      context: ./reviewsv1
+      dockerfile: Dockerfile
+    environment:
+      - ENABLE_RATINGS=true
+      - SERVICE_VERSION=v1
+    volumes:
+      -vol-reviewsv1:/home/upm/volumes/reviewsv1
+    ports:
+      - "9080:9080"
+
+reviewsv2:
+    build:
+      context: ./reviewsv2
+      dockerfile: Dockerfile
+    environment:
+      - ENABLE_RATINGS=true
+      - SERVICE_VERSION=v2
+      - STAR_COLOR=black
+    volumes:
+      -vol-reviewsv2:/home/upm/volumes/reviewsv2
+    ports:
+      - "9080:9080"
+
+reviewsv3:
+    build:
+      context: ./reviewsv3
+      dockerfile: Dockerfile
+    environment:
+      - ENABLE_RATINGS=true
+      - SERVICE_VERSION=v3
+      - STAR_COLOR=red
+    volumes:
+      -vol-reviewsv3:/home/upm/volumes/reviewsv3
+
+    ports:
+      - "9080:9080"
+
+ratings:
+    build:
+      context: ./ratings
+      dockerfile: Dockerfile
+    environment:
+      - SERVICE_VERSION=v1
+    volumes:
+      - vol-ratings:/home/upm/volumes/ratings
+    ports:
+      - "9080:9080"
+    
+volumes:
+  vol-productpage:
+  vol-details:
+  vol-reviewsv1:
+  vol-reviewsv2:
+  vol-reviewsv3:
+  vol-ratings:
