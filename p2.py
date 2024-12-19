@@ -83,6 +83,6 @@ if __name__ == "__main__":
         build_and_run()
     elif comando == "liberar":
         liberar()
-        ####
-        #gggggggggg
+        ####jh
+        
     
