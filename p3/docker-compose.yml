@@ -22,19 +22,19 @@ services:
     volumes:
       - vol-details:/home/upm/volumes/details
     ports:
-      - "9080:9080"
+      - "9080"
 
   reviewsv1:
     build:
       context: ./reviewsv1
       dockerfile: Dockerfile
     environment:
-      - ENABLE_RATINGS=true
+      - ENABLE_RATINGS=false
       - SERVICE_VERSION=v1
     volumes:
       -vol-reviewsv1:/home/upm/volumes/reviewsv1
     ports:
-      - "9080:9080"
+      - "9080"
 
 reviewsv2:
     build:
@@ -47,7 +47,7 @@ reviewsv2:
     volumes:
       -vol-reviewsv2:/home/upm/volumes/reviewsv2
     ports:
-      - "9080:9080"
+      - "9080"
 
 reviewsv3:
     build:
@@ -61,7 +61,7 @@ reviewsv3:
       -vol-reviewsv3:/home/upm/volumes/reviewsv3
 
     ports:
-      - "9080:9080"
+      - "9080"
 
 ratings:
     build:
@@ -69,10 +69,11 @@ ratings:
       dockerfile: Dockerfile
     environment:
       - SERVICE_VERSION=v1
+      - ENABLE_EXTERNAL_BOOK_SERVICE=true
     volumes:
       - vol-ratings:/home/upm/volumes/ratings
     ports:
-      - "9080:9080"
+      - "9080"
     
 volumes:
   vol-productpage:

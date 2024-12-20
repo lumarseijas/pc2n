@@ -10,4 +10,4 @@ ENV SERVICE_VERSION=v3
 
 RUN gradle clean build
 
-CMD ["/bin/bash"]
+CMD ["java", "-jar", "build/libs/reviews.jar"]

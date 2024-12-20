@@ -9,6 +9,6 @@ RUN apt-get install -y python3-pip
 
 WORKDIR /practica_creativa2/bookinfo/src/productpage
 
-RUN pip3 install requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 CMD [ "python3", "productpage.py", "9080" ]
