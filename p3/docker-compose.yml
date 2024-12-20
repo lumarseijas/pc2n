@@ -10,7 +10,7 @@ services:
     ports:
       - "9080:9080"
     volumes:
-      -vol-productpage:/home/upm/volumes/productpage
+      - vol-productpage:/home/upm/Desktop/pc2n/p3/volumes/productpage
 
   details:
     build:
@@ -20,7 +20,7 @@ services:
       - SERVICE_VERSION=v1
       - ENABLE_EXTERNAL_BOOK_SERVICE=true
     volumes:
-      - vol-details:/home/upm/volumes/details
+      - vol-details:/home/upm/Desktop/pc2n/p3/volumes/details
     ports:
       - "9080"
 
@@ -32,7 +32,7 @@ services:
       - ENABLE_RATINGS=false
       - SERVICE_VERSION=v1
     volumes:
-      -vol-reviewsv1:/home/upm/volumes/reviewsv1
+      - vol-reviewsv1:/home/upm/Desktop/pc2n/p3/volumes/reviewsv1
     ports:
       - "9080"
 
@@ -45,7 +45,7 @@ services:
       - SERVICE_VERSION=v2
       - STAR_COLOR=black
     volumes:
-      -vol-reviewsv2:/home/upm/volumes/reviewsv2
+      - vol-reviewsv2:/home/upm/Desktop/pc2n/p3/volumes/reviewsv2
     ports:
       - "9080"
 
@@ -58,12 +58,11 @@ services:
       - SERVICE_VERSION=v3
       - STAR_COLOR=red
     volumes:
-      -vol-reviewsv3:/home/upm/volumes/reviewsv3
-
+      - vol-reviewsv3:/home/upm/Desktop/pc2n/p3/volumes/reviewsv3
     ports:
       - "9080"
 
-ratings:
+  ratings:
     build:
       context: ./ratings
       dockerfile: Dockerfile
@@ -71,10 +70,10 @@ ratings:
       - SERVICE_VERSION=v1
       - ENABLE_EXTERNAL_BOOK_SERVICE=true
     volumes:
-      - vol-ratings:/home/upm/volumes/ratings
+      - vol-ratings:/home/upm/Desktop/pc2n/p3/volumes/ratings
     ports:
       - "9080"
-    
+
 volumes:
   vol-productpage:
   vol-details:

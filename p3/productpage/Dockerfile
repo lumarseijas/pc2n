@@ -4,7 +4,8 @@ RUN apt-get update && apt-get install -y git
 
 RUN git clone https://github.com/CDPS-ETSIT/practica_creativa2.git
 
-RUN apt-update
+RUN apt-get update
+
 RUN apt-get install -y python3-pip
 
 WORKDIR /practica_creativa2/bookinfo/src/productpage

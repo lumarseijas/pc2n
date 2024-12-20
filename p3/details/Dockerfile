@@ -1,6 +1,16 @@
 FROM ruby:2.7.1-slim
 
-COPY practica_creativa2/bookinfo/src/details/details.rb /opt/microservices/
+RUN apt-get update && apt-get install -y git 
+
+RUN git clone https://github.com/CDPS-ETSIT/practica_creativa2.git
+
+RUN apt-get update
+
+RUN apt-get install
+
+WORKDIR /practica_creativa2/
+
+COPY bookinfo/src/details/details.rb /opt/microservices/
 
 ENV SERVICE_VERSION=v1
 
