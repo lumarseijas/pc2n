@@ -7,7 +7,7 @@ RUN git clone https://github.com/CDPS-ETSIT/practica_creativa2.git
 RUN apt-update
 RUN apt-get install -y python3-pip
 
-WORKDIR practica_creativa2/bookinfo/src/productpage
+WORKDIR /practica_creativa2/bookinfo/src/productpage
 
 RUN pip3 install requirements.txt
 
