@@ -26,9 +26,9 @@ call('sudo chmod +x p3.py', shell=True)# + x--> permite ejecutar el archivo como
 call('git clone https://github.com/CDPS-ETSIT/practica_creativa2.git', shell=True)
 
 #imagenes docker
-#formato: nombreservicio-24
+#formato: nombreservicio/24
+#call("sudo docker build -t NOMBREIMAGEN .")
 
-call("sudo docker build -t NOMBREIMAGEN .")
 #os.chdir('practica_creativa2/bookinfo/src/reviews')
 call('docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build', shell=True)
 
