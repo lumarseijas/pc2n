@@ -28,15 +28,19 @@ call('git clone https://github.com/CDPS-ETSIT/practica_creativa2.git', shell=Tru
 #imagenes docker
 #formato: nombreservicio/24
 #call("sudo docker build -t NOMBREIMAGEN .")
-call("sudo docker build -t productpage/24 .", shell=True)
-call("sudo docker build -t details/24 .", shell=True)
-call("sudo docker build -t ratings/24 .", shell=True)
+call("docker build -t productpage/24 .", shell=True)
+call("docker build -t details/24 .", shell=True)
+call("docker build -t ratings/24 .", shell=True)
 
 #comando (del enunciado) compilar y empaquetar ficheros necesarios ejecutando, dentro de src/reviews:
 #hay q cambiar de directorio a /src/reviews?
 call('docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build', shell=True)
 
-# falta añadir lo de las versiones de reviews
+# añadir lo de las versiones de reviews
+call ("docker build -t reviews-v1/24 -f ./reviews/Dockerfile --build-arg service_version=v1 --build-arg enable_ratings=false .", shell=True)
+call ("docker build -t reviews-v2/24 -f ./reviews/Dockerfile --build-arg service_version=v2 --build-arg enable_ratings=true --build-arg star_color='black' .", shell=True)
+call ("docker build -t reviews-v3/24 -f ./reviews/Dockerfile --build-arg service_version=v3 --build-arg enable_ratings=true --build-arg star_color='red' .", shell=True)
+
 
 # call('sudo docker compose build', shell=True)
 # call('sudo docker compose -f /home/upm/Desktop/pc2n/p3/docker-compose.yml up', shell=True)
