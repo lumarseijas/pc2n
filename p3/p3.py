@@ -36,6 +36,8 @@ call("sudo docker build -t ratings/24 .", shell=True)
 #hay q cambiar de directorio a /src/reviews?
 call('docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build', shell=True)
 
+# falta añadir lo de las versiones de reviews
+
 # call('sudo docker compose build', shell=True)
 # call('sudo docker compose -f /home/upm/Desktop/pc2n/p3/docker-compose.yml up', shell=True)
 call("docker compose up -d", shell=True)
