@@ -24,41 +24,16 @@ services:
     ports:
       - "9080"
 
-  reviewsv1:
+  reviews:
     build:
-      context: ./reviewsv1
+      context: ./reviews
       dockerfile: Dockerfile
     environment:
-      - ENABLE_RATINGS=false
-      - SERVICE_VERSION=v1
+      - ENABLE_RATINGS=true #en v1 es false
+      - SERVICE_VERSION=v3 #v1, v2
+      - STAR_COLOR=red #v2 es black y en v1 no hay estrella
     volumes:
-      - vol-reviewsv1:/home/upm/Desktop/pc2n/p3/volumes/reviewsv1
-    ports:
-      - "9080"
-
-  reviewsv2:
-    build:
-      context: ./reviewsv2
-      dockerfile: Dockerfile
-    environment:
-      - ENABLE_RATINGS=true
-      - SERVICE_VERSION=v2
-      - STAR_COLOR=black
-    volumes:
-      - vol-reviewsv2:/home/upm/Desktop/pc2n/p3/volumes/reviewsv2
-    ports:
-      - "9080"
-
-  reviewsv3:
-    build:
-      context: ./reviewsv3
-      dockerfile: Dockerfile
-    environment:
-      - ENABLE_RATINGS=true
-      - SERVICE_VERSION=v3
-      - STAR_COLOR=red
-    volumes:
-      - vol-reviewsv3:/home/upm/Desktop/pc2n/p3/volumes/reviewsv3
+      - vol-reviews:/home/upm/Desktop/pc2n/p3/volumes/reviews
     ports:
       - "9080"
 
@@ -77,7 +52,5 @@ services:
 volumes:
   vol-productpage:
   vol-details:
-  vol-reviewsv1:
-  vol-reviewsv2:
-  vol-reviewsv3:
+  vol-reviews:
   vol-ratings:

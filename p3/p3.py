@@ -8,7 +8,7 @@ os.system('sudo apt install docker compose')
 #os.system('sudo chmod +x /usr/local/bin/docker-compose')# + x--> permite ejecutar el archivo como programa
 
 os.system('git clone https://github.com/CDPS-ETSIT/practica_creativa2.git')
-os.chdir('practica_creativa2/bookinfo/src/reviewsv1')
+os.chdir('practica_creativa2/bookinfo/src/reviews')
 os.system('sudo docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build')
 #os.chdir(os.path.expanduser("~")) #??
 
