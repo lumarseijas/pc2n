@@ -16,11 +16,13 @@ import os
 # ejecutar los contenedores docker para todos los servicios
 
 call('sudo apt-get update', shell=True)
+call("sudo apt-get install -f", shell=True) #nueva
 call('yes | sudo apt-get upgrade', shell=True)
 call("sudo apt-get -y install git", shell=True)
 call("sudo apt-get -y install python3-pip", shell=True)
 call("sudo apt -y install docker.io", shell=True)
-call('sudo apt -y install docker compose', shell=True)
+call("sudo apt-get install docker.io containerd", shell=True) #nueva
+call('sudo apt -y install docker-compose-plugin', shell=True) #cambiada
 #call('sudo chmod +x p3.py', shell=True)# + x--> permite ejecutar el archivo como programa
 #
 
@@ -29,14 +31,17 @@ call('git clone https://github.com/CDPS-ETSIT/practica_creativa2.git', shell=Tru
 #imagenes docker
 #formato: nombreservicio/24
 #call("sudo docker build -t NOMBREIMAGEN .")
+os.chdir("practica_creativa2/bookinfo/src")
 call("docker build -t productpage/24 .", shell=True)
 call("docker build -t details/24 .", shell=True)
 call("docker build -t ratings/24 .", shell=True)
 
 #comando (del enunciado) compilar y empaquetar ficheros necesarios ejecutando, dentro de src/reviews:
 #hay q cambiar de directorio a /src/reviews?
+os.chdir("reviews")
 call('docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build', shell=True)
 
+os.chdir("..") #volver a src
 # añadir lo de las versiones de reviews
 call ("docker build -t reviews-v1/24 -f ./reviews/Dockerfile --build-arg service_version=v1 --build-arg enable_ratings=false .", shell=True)
 call ("docker build -t reviews-v2/24 -f ./reviews/Dockerfile --build-arg service_version=v2 --build-arg enable_ratings=true --build-arg star_color='black' .", shell=True)
@@ -44,5 +49,6 @@ call ("docker build -t reviews-v3/24 -f ./reviews/Dockerfile --build-arg service
 
 # call('sudo docker compose build', shell=True)
 # call('sudo docker compose -f /home/upm/Desktop/pc2n/p3/docker-compose.yaml up', shell=True)
+os.chdir("../../..")
 call("docker compose up -d", shell=True)
 
