@@ -31,14 +31,13 @@ call('git clone https://github.com/CDPS-ETSIT/practica_creativa2.git', shell=Tru
 #imagenes docker
 #formato: nombreservicio/24
 #call("sudo docker build -t NOMBREIMAGEN .")
-os.chdir("practica_creativa2/bookinfo/src")
 call("docker build -t productpage/24 .", shell=True)
 call("docker build -t details/24 .", shell=True)
 call("docker build -t ratings/24 .", shell=True)
 
 #comando (del enunciado) compilar y empaquetar ficheros necesarios ejecutando, dentro de src/reviews:
 #hay q cambiar de directorio a /src/reviews?
-os.chdir("reviews")
+os.chdir("practica_creativa2/bookinfo/src/reviews")
 call('docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build', shell=True)
 
 os.chdir("..") #volver a src
@@ -49,6 +48,6 @@ call ("docker build -t reviews-v3/24 -f ./reviews/Dockerfile --build-arg service
 
 # call('sudo docker compose build', shell=True)
 # call('sudo docker compose -f /home/upm/Desktop/pc2n/p3/docker-compose.yaml up', shell=True)
-os.chdir("../../..")
-call("docker compose up -d", shell=True)
+#os.chdir("../../..")
+call("docker compose up", shell=True)
 
