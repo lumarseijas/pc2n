@@ -41,7 +41,6 @@ call ("docker build -t reviews-v1/24 -f ./reviews/Dockerfile --build-arg service
 call ("docker build -t reviews-v2/24 -f ./reviews/Dockerfile --build-arg service_version=v2 --build-arg enable_ratings=true --build-arg star_color='black' .", shell=True)
 call ("docker build -t reviews-v3/24 -f ./reviews/Dockerfile --build-arg service_version=v3 --build-arg enable_ratings=true --build-arg star_color='red' .", shell=True)
 
-
 # call('sudo docker compose build', shell=True)
 # call('sudo docker compose -f /home/upm/Desktop/pc2n/p3/docker-compose.yml up', shell=True)
 call("docker compose up -d", shell=True)
