@@ -22,6 +22,7 @@ call("sudo apt-get -y install python3-pip", shell=True)
 call("sudo apt -y install docker.io", shell=True)
 call('sudo apt -y install docker compose', shell=True)
 #call('sudo chmod +x p3.py', shell=True)# + x--> permite ejecutar el archivo como programa
+#
 
 call('git clone https://github.com/CDPS-ETSIT/practica_creativa2.git', shell=True)
 
