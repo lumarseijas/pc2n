@@ -10,10 +10,10 @@ RUN git clone https://github.com/CDPS-ETSIT/practica_creativa2.git
 
 WORKDIR /practica_creativa2/bookinfo/src/productpage 
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 RUN sed -i "s/Simple\sBookstore\sApp/${GROUP_NUM}/g" templates/productpage.html
 
 EXPOSE 5060
 
-CMD ["python3", "productpage_monolith.py"]
+CMD ["python3", "productpage_monolith.py", "5060"]
