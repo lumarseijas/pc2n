@@ -4,7 +4,6 @@ services:
   productpage: 
     build:
       context: ./productpage
-      dockerfile: Dockerfile
     environment:
       - GROUP_NUMBER=24
     image: productpage/24 #las imagenes son microserv/numgroup
@@ -17,7 +16,6 @@ services:
   details:
     build:
       context: ./details
-      dockerfile: Dockerfile
     environment:
       - SERVICE_VERSION=v1
       - ENABLE_EXTERNAL_BOOK_SERVICE=true
@@ -31,7 +29,6 @@ services:
   reviews:
     build:
       context: practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg
-      dockerfile: Dockerfile
     environment:
       - ENABLE_RATINGS=true #en v1 es false
       - SERVICE_VERSION=v3 #v1, v2
@@ -46,7 +43,6 @@ services:
   ratings:
     build:
       context: ./ratings
-      dockerfile: Dockerfile
     environment:
       - SERVICE_VERSION=v1
       - ENABLE_EXTERNAL_BOOK_SERVICE=true
