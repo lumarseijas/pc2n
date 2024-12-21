@@ -6,6 +6,15 @@
 
 from subprocess import call
 #FALTA LO DE LOS 3 NODOS
+call(
+    "gcloud container clusters create pc2 "
+    "--num-nodes=3 "
+    "--enable-autoscaling=false "
+    "--region=us-central1 "
+    "--machine-type=e2-medium",
+    shell=True
+)
+
 call("kubectl apply -f productpage.yaml", shell=True)
 call("kubectl apply -f details.yaml", shell=True)
 call("kubectl apply -f ratings.yaml", shell=True)
