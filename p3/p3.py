@@ -21,7 +21,7 @@ call("sudo apt-get -y install git", shell=True)
 call("sudo apt-get -y install python3-pip", shell=True)
 call("sudo apt -y install docker.io", shell=True)
 call('sudo apt -y install docker compose', shell=True)
-call('sudo chmod +x p3.py', shell=True)# + x--> permite ejecutar el archivo como programa
+#call('sudo chmod +x p3.py', shell=True)# + x--> permite ejecutar el archivo como programa
 
 call('git clone https://github.com/CDPS-ETSIT/practica_creativa2.git', shell=True)
 
@@ -42,6 +42,6 @@ call ("docker build -t reviews-v2/24 -f ./reviews/Dockerfile --build-arg service
 call ("docker build -t reviews-v3/24 -f ./reviews/Dockerfile --build-arg service_version=v3 --build-arg enable_ratings=true --build-arg star_color='red' .", shell=True)
 
 # call('sudo docker compose build', shell=True)
-# call('sudo docker compose -f /home/upm/Desktop/pc2n/p3/docker-compose.yml up', shell=True)
+# call('sudo docker compose -f /home/upm/Desktop/pc2n/p3/docker-compose.yaml up', shell=True)
 call("docker compose up -d", shell=True)
 
