@@ -5,7 +5,7 @@
 # kubectl get services
 
 from subprocess import call
-#FALTA LO DE LOS 3 NODOS
+
 call("minikube start --nodes 3",shell=True)
 
 call("minikube kubectl apply -f productpage.yaml", shell=True)
