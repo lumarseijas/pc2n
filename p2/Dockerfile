@@ -12,7 +12,7 @@ WORKDIR /practica_creativa2/bookinfo/src/productpage
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-RUN sed -i "s/<title>Simple Bookstore App<\/title>/<title>Grupo: 24<\/title>/" templates/productpage.html
+RUN sed -i "s/Simple\sBookstore\sApp/${GROUP_NUM}/g" templates/productpage.html
 
 EXPOSE 5060
 

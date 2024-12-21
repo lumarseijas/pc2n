@@ -6,17 +6,15 @@ from subprocess import call
 # Actualizar el sistema e instalar Docker
 #call(["sudo", "apt", "update"])
 #call(["sudo", "apt", "install", "-y", "docker.io"])
-
-call ("sudo", "apt-get", "-y" "update")
-call ("sudo", "apt", "-y", "install", "docker.io")
-
+call(["sudo apt-get -y update "], shell=True)
+call(["sudo apt -y install docker.io "], shell=True)
 def crear():
     # Crear la imagen de Docker
     print("[DEBUG] Construyendo la imagen de Docker...")
     call("sudo docker build -t product-page/24 . ")
     # Ejecutar el contenedor
     print("[DEBUG] Ejecutando el contenedor de Docker...")
-    call("sudo docker run --name product-page-g24 -p 5060:5060 -e GROUP_NUM=24 -d product-page/24")  
+    call("sudo docker run --name g24-product-page -p 5060:5060 -e GROUP_NUM=24 -d product-page/24")  
     print("[DEBUG] Contenedor ejecutándose en el puerto 5060.")
    
 
