@@ -1,21 +1,19 @@
 FROM ruby:2.7.1-slim
 
-RUN apt-get update && apt-get install -y git 
+RUN apt-get update && apt-get install -y git
 
 RUN git clone https://github.com/CDPS-ETSIT/practica_creativa2.git
 
-RUN apt-get update
+WORKDIR /practica_creativa2/bookinfo/src/details
 
-RUN apt-get install
+#dependencias de ruby:
+RUN gem install bundler && bundle install 
 
-WORKDIR /practica_creativa2/
-
-COPY bookinfo/src/details/details.rb /opt/microservices/
+COPY /details.rb /opt/microservices/
 
 ENV SERVICE_VERSION=v1
-
 ENV ENABLE_EXTERNAL_BOOK_SERVICE=true
 
 EXPOSE 9080
 
-CMD ["ruby","/opt/microservices/details.rb", "9080"] 
+CMD ["ruby", "details.rb", "9080"]

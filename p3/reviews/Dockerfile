@@ -1,13 +1,15 @@
-FROM gradle:4.8.1
+FROM openliberty/open-liberty:full-java11-openj9-ubi
 
-USER root
+# Copiar la aplicación empaquetada al contenedor
+COPY build/libs/reviews-1.0.0.jar /config/dropins/
 
-WORKDIR /home/gradle/project
+# Configuración de variables de entorno
+ENV SERVICE_VERSION=v1
+ENV ENABLE_RATINGS=true
+ENV STAR_COLOR=black
 
-COPY src/reviews/ ./
+# Exponer el puerto para el servicio
+EXPOSE 9080
 
-ENV SERVICE_VERSION=v3
-
-RUN gradle clean build
-
-CMD ["java", "-jar", "build/libs/reviews.jar"]
+# Comando para arrancar Open Liberty
+CMD ["/opt/ol/wlp/bin/server", "run", "defaultServer"]

@@ -4,7 +4,7 @@ ENV GROUP_NUM=24
 
 #WORKDIR /app
 
-RUN apt-get update && apt-get install -y git && apt-get clean
+RUN apt-get update && apt-get install -y git && apt-get install -y python3-pip
 
 RUN git clone https://github.com/CDPS-ETSIT/practica_creativa2.git
 
