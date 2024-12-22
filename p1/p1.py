@@ -80,3 +80,4 @@ if param[1] == "arrancar":
 
 if param[1] == "liberar":
     liberar()
+    #
