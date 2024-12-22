@@ -16,7 +16,7 @@ def arrancar(port_param='9080'):
 
     print("[DEBUG] Instalando las dependencias del proyecto...")
     call(['pip3', 'install', '-r', 'requirements.txt'])
-
+    call(['pip', 'install', '--upgrade', 'json2html']) #
     # Configurar variable de entorno
     os.environ['GROUP_NUM'] = '24'
 
