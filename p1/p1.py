@@ -16,7 +16,9 @@ def arrancar(port_param='9080'):
 
     print("[DEBUG] Instalando las dependencias del proyecto...")
     call(['pip3', 'install', '-r', 'requirements.txt'])
-    call(['pip', 'install', '--upgrade', 'json2html']) #
+
+    call(['pip', 'install', '--upgrade', 'json2html'])
+
     # Configurar variable de entorno
     os.environ['GROUP_NUM'] = '24'
 
@@ -24,6 +26,7 @@ def arrancar(port_param='9080'):
     call(['mv', 'productpage_monolith.py', 'productpage_monolith_onlyRead.py'])
 
     with open('productpage_monolith_onlyRead.py', 'r') as fin, open('productpage_monolith.py', 'w') as fout:
+        group_added = False 
         for line in fin:
             if 'flood_factor = 0 if (os.environ.get("FLOOD_FACTOR") is None)' in line:
                 fout.write(line)
@@ -33,7 +36,9 @@ def arrancar(port_param='9080'):
                 fout.write('    group = groupNumber' + os.linesep)
             elif '\'productpage.html\',' in line:
                 fout.write(line)
-                fout.write('    group=group,' + os.linesep)
+                if not group_added:  # Solo agregar 'group' si no se ha añadido antes
+                    fout.write('    group=group,' + os.linesep)
+                    group_added = True
             else:
                 fout.write(line)
 
