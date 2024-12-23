@@ -13,18 +13,14 @@ def crear():
     call("sudo docker build -t productpage/24 . ", shell=True)
     # Ejecutar el contenedor
     print("[DEBUG] Ejecutando el contenedor de Docker...")
-    call("sudo docker run --name productpage-24 -p 5060:5060 -e GROUP_NUM=24 -d productpage/24", shell=True)  
-    print("[DEBUG] Contenedor ejecutándose en el puerto 5060.")
+    call("sudo docker run --name productpage-24 -p 9080:5060 -e GROUP_NUM=24 -d productpage/24", shell=True)  
    
-
-from subprocess import call
-
 def liberar():
     print("[DEBUG] Liberando recursos...")
     # Detener y eliminar el contenedor
-    call("sudo docker stop product-page-g24", shell=True)
-    call("sudo docker rm product-page-g24", shell=True)
-    call("sudo docker rmi -f product-page/g24", shell=True)
+    call("sudo docker stop productpage-24", shell=True)
+    call("sudo docker rm productpage-24", shell=True)
+    call("sudo docker rmi -f productpage/24", shell=True)
     print("[INFO] Contenedor y recursos eliminados correctamente.")
 
 comando = sys.argv[1]
