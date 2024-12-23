@@ -30,6 +30,7 @@ http://<ip-local>:9080/productpage
 ```
 
 La aplicación muestra correctamente la interfaz gráfica con el título: **"GRUPO 24"**.
+
 ![Vista de la aplicación desplegada](p1cpc2n.png)
 ---
 
@@ -70,5 +71,6 @@ http://<ip-local>:5060/productpage
 ```
 
 La aplicación muestra correctamente la interfaz gráfica con el título **"24"**.
+
 ![Vista de la aplicación desplegada](p2cpc2n.png)
 
