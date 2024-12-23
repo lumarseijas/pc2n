@@ -28,9 +28,8 @@ o	Construcción de la imagen Docker usando el formato productpage/24.
 o	Ejecución del contenedor con el nombre productpage-24, exponiendo el puerto 5060 y configurando la variable de entorno GROUP_NUM=24.
 o	Liberación de recursos, deteniendo y eliminando contenedores e imágenes Docker.
 El script fue ejecutado en una máquina local con Docker instalado, usando: python3 p2.py crear
-En el navegador buscamos: http://<ip-local>:9080/productpage y muestra correctamente la interfaz gráfica con el título: "24"
+En el navegador buscamos: http://<ip-local>:9080/productpage y muestra correctamente la interfaz gráfica con el título: "24".
  
-
 
 
 
