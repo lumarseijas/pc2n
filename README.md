@@ -6,7 +6,7 @@
 
 ## 1. Despliegue de la Aplicación en Máquina Virtual Pesada
 
-Para el despliegue de la aplicación como monolito, se desarrolló un script llamado `p1.py` que automatiza el proceso de instalación y configuración. Este script realiza las siguientes tareas:
+Para el despliegue de la aplicación como monolito, hemos desarrollado un script llamado `p1.py` que automatiza el proceso de instalación y configuración. Este script realiza las siguientes tareas:
 
 1. **Actualización del sistema**: Asegura que la máquina tenga los paquetes actualizados.
 2. **Clonación del repositorio**: Clona el repositorio de la práctica que contiene el código de la aplicación.
@@ -17,7 +17,7 @@ Para el despliegue de la aplicación como monolito, se desarrolló un script lla
 7. **Liberación de recursos**: Permite liberar recursos eliminando los archivos generados durante el proceso.
 
 ### Ejecución
-Para probar la funcionalidad, ejecutamos el script en la máquina con la IP local de nuestro ordenador. Utilizamos el siguiente comando:
+Para probar la funcionalidad, ejecutamos el script en la máquina con la IP local de nuestro ordenador, utilizando el siguiente comando:
 
 ```bash
 python3 p1.py arrancar
@@ -30,15 +30,16 @@ http://<ip-local>:9080/productpage
 ```
 
 La aplicación muestra correctamente la interfaz gráfica con el título: **"GRUPO 24"**.
+
 ![Vista de la aplicación desplegada](p1cpc2n.png)
 ---
 
 ## 2. Despliegue de una Aplicación Monolítica Usando Docker
 
-Para desplegar la misma aplicación monolítica utilizada en la P1, empleamos contenedores Docker.
+Ahora queremos desplegar la misma aplicación monolítica utilizada en la p1, pero empleando contenedores Docker.
 
 ### Dockerfile
-Se definió un fichero `Dockerfile` con las siguientes características:
+Hemos definido un fichero `Dockerfile` con las siguientes características:
 
 - Usa como base la imagen `python:3.7.7-slim`.
 - Instala dependencias necesarias como `git` y `pip3`.
@@ -47,7 +48,7 @@ Se definió un fichero `Dockerfile` con las siguientes características:
 - Expone el puerto `5060` y ejecuta la aplicación.
 
 ### Automatización
-Se desarrolló un script (`p2.py`) que automatiza el proceso de construcción y ejecución del contenedor Docker con las siguientes funcionalidades:
+Hemos desarrollado un script (`p2.py`) que automatiza el proceso de construcción y ejecución del contenedor Docker con las siguientes funcionalidades:
 
 1. **Construcción de la imagen Docker**: Usa el formato `productpage/24`.
 2. **Ejecución del contenedor**:
@@ -66,9 +67,10 @@ python3 p2.py crear
 En el navegador buscamos:
 
 ```text
-http://<ip-local>:5060/productpage
+http://<ip-local>:9080/productpage
 ```
 
 La aplicación muestra correctamente la interfaz gráfica con el título **"24"**.
+
 ![Vista de la aplicación desplegada](p2cpc2n.png)
 
