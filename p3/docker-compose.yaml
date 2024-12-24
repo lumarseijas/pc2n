@@ -1,55 +1,62 @@
-version: '3.7'
-
 services:
   productpage: 
     build:
       context: ./productpage
+      dockerfile: Dockerfile
     environment:
       - GROUP_NUMBER=24
-    image: productpage/24 #las imagenes son microserv/numgroup
-    container_name: productpage-24 #nombreservicio-24
+    image: productpage/24
+    container_name: productpage-24
     ports:
       - "9080:9080"
     volumes:
-      - vol-productpage:/home/upm/Desktop/pc2n/p3/volumes/productpage
+      - ./productpage:/opt/microservices  # Ruta ajustada para corresponder al contexto correcto
 
   details:
     build:
       context: ./details
+      dockerfile: Dockerfile
     environment:
       - SERVICE_VERSION=v1
-      - ENABLE_EXTERNAL_BOOK_SERVICE= "true"
+      - ENABLE_EXTERNAL_BOOK_SERVICE=true
     image: details/24 
     container_name: details-24
-    volumes:
-      - vol-details:/home/upm/Desktop/pc2n/p3/volumes/details
     ports:
-      - "9080"
+      - "9081:9080"  # Mapeo de puerto único
+    volumes:
+      - ./details:/opt/microservices
 
   reviews:
     build:
-      context: practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg
+      context: ./practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg
+      dockerfile: Dockerfile
+    environment:
+      - ENABLE_RATINGS=true  # En v1 sería false
+      - SERVICE_VERSION=v3   # Cambiar a v1 o v2 según la versión a probar
+      - STAR_COLOR=red       # En v2 sería black y en v1 no habría estrella
     image: reviews/24 
     container_name: reviews-24
-    volumes:
-      - vol-reviews:/home/upm/Desktop/pc2n/p3/volumes/reviews
     ports:
-      - "9080"
+      - "9082:9080"  # Mapeo único por versión
+    volumes:
+      - ./reviews:/opt/microservices
 
   ratings:
     build:
       context: ./ratings
+      dockerfile: Dockerfile
     environment:
       - SERVICE_VERSION=v1
     image: ratings/24 
     container_name: ratings-24
-    volumes:
-      - vol-ratings:/home/upm/Desktop/pc2n/p3/volumes/ratings
     ports:
-      - "9080"
+      - "9083:9080"  # Mapeo único
+    volumes:
+      - ./ratings:/opt/microservices
 
 volumes:
   vol-productpage:
   vol-details:
   vol-reviews:
   vol-ratings:
+
