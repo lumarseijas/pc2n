@@ -6,7 +6,7 @@ RUN git clone https://github.com/CDPS-ETSIT/practica_creativa2.git
 
 WORKDIR /practica_creativa2/bookinfo/src/details
 
-COPY /details.rb /opt/microservices/
+COPY ./details.rb /opt/microservices/
 
 ARG service_version
 ARG enable_external_book_service

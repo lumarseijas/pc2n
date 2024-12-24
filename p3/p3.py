@@ -17,9 +17,10 @@ def crear():
     #imagenes docker
     #formato: nombreservicio/24
     #call("sudo docker build -t NOMBREIMAGEN .")
-    call("docker build -t productpage/24 ./productpage/Dockerfile .", shell=True) #he cambiado que sea en vez de . ./productpage/Dockerfile . (en los 3 servicios)
-    call("docker build -t details/24 ./details/Dockerfile .", shell=True)
-    call("docker build -t ratings/24 ./ratings/Dockerfile .", shell=True)
+    call("docker build -t productpage/24 -f ./productpage/Dockerfile ./productpage", shell=True) #he cambiado que sea en vez de . ./productpage/Dockerfile . (en los 3 servicios)
+    call("mv practica_creativa2/bookinfo/src/details/details.rb ./details/", shell=True)
+    call("docker build -t details/24 -f ./details/Dockerfile ./details", shell=True)
+    call("docker build -t ratings/24 -f ./ratings/Dockerfile ./ratings", shell=True)
 
     #comando (del enunciado) compilar y empaquetar ficheros necesarios ejecutando, dentro de src/reviews:
     #cambiar de directorio a /src/reviews
@@ -37,6 +38,7 @@ def liberar():
     call("docker compose down", shell=True)
     call("docker rmi -f $(docker images -q)", shell=True)
     call("sudo rm -rf practica_creativa2", shell=True)
+    call("rm -f ./details/details.rb", shell=True)
 
 comando = sys.argv[1]
 
