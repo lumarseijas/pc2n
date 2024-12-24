@@ -18,7 +18,7 @@ services:
       context: ./details
     environment:
       - SERVICE_VERSION=v1
-      - ENABLE_EXTERNAL_BOOK_SERVICE=true
+      - ENABLE_EXTERNAL_BOOK_SERVICE= "true"
     image: details/24 
     container_name: details-24
     volumes:
@@ -29,10 +29,6 @@ services:
   reviews:
     build:
       context: practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg
-    environment:
-      - ENABLE_RATINGS=true #en v1 es false
-      - SERVICE_VERSION=v3 #v1, v2
-      - STAR_COLOR=red #v2 es black y en v1 no hay estrella
     image: reviews/24 
     container_name: reviews-24
     volumes:
@@ -45,7 +41,6 @@ services:
       context: ./ratings
     environment:
       - SERVICE_VERSION=v1
-      - ENABLE_EXTERNAL_BOOK_SERVICE=true
     image: ratings/24 
     container_name: ratings-24
     volumes:

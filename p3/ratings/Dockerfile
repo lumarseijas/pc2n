@@ -1,14 +1,17 @@
 FROM node:12.18.1-slim
 
-COPY ./practica_creativa2/bookinfo/src/ratings/package.json /opt/microservices/
+RUN git clone https://github.com/CDPS-ETSIT/practica_creativa2.git
 
-COPY ./practica_creativa2/bookinfo/src/ratings/ratings.js /opt/microservices/
+COPY /practica_creativa2/bookinfo/src/ratings/package.json /opt/microservices/
+
+COPY /practica_creativa2/bookinfo/src/ratings/ratings.js /opt/microservices/
+
+WORKDIR /opt/microservices
 
 RUN npm install
 
-ENV SERVICE_VERSION=v1
-
-ENV ENABLE_EXTERNAL_BOOK_SERVICE=true
+ARG service_version
+ENV SERVICE_VERSION ${service_version:-v1}
 
 EXPOSE 9080
 
