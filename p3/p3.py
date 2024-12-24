@@ -20,17 +20,33 @@ def crear():
     call("docker build -t productpage/24 -f ./productpage/Dockerfile ./productpage", shell=True) #he cambiado que sea en vez de . ./productpage/Dockerfile . (en los 3 servicios)
     call("mv practica_creativa2/bookinfo/src/details/details.rb ./details/", shell=True)
     call("docker build -t details/24 -f ./details/Dockerfile ./details", shell=True)
+    call("mv practica_creativa2/bookinfo/src/ratings/package.json ./ratings/", shell=True)
+    call("mv practica_creativa2/bookinfo/src/ratings/ratings.js ./ratings/", shell=True)
     call("docker build -t ratings/24 -f ./ratings/Dockerfile ./ratings", shell=True)
 
     #comando (del enunciado) compilar y empaquetar ficheros necesarios ejecutando, dentro de src/reviews:
     #cambiar de directorio a /src/reviews
     os.chdir("practica_creativa2/bookinfo/src/reviews")
     call('docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build', shell=True)
-
+    os.chdir("..")
     # añadir lo de las versiones de reviews
-    call ("docker build -t reviews-v1/24 -f ./reviews/Dockerfile --build-arg service_version=v1 --build-arg enable_ratings=false .", shell=True)
-    call ("docker build -t reviews-v2/24 -f ./reviews/Dockerfile --build-arg service_version=v2 --build-arg enable_ratings=true --build-arg star_color='black' .", shell=True)
-    call ("docker build -t reviews-v3/24 -f ./reviews/Dockerfile --build-arg service_version=v3 --build-arg enable_ratings=true --build-arg star_color='red' .", shell=True)
+    call ("docker build -t reviews-v1/24 \
+    -f practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg/Dockerfile \
+    --build-arg service_version=v1 \
+    --build-arg enable_ratings=false \
+    practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg", shell=True)
+    call ("docker build -t reviews-v2/24 \
+    -f practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg/Dockerfile \
+    --build-arg service_version=v2 \
+    --build-arg enable_ratings=true \
+    --build-arg star_color='black' \
+    practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg", shell=True)
+    call ("docker build -t reviews-v3/24 \
+    -f practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg/Dockerfile \
+    --build-arg service_version=v3 \
+    --build-arg enable_ratings=true \
+    --build-arg star_color='red' \
+    practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg", shell=True)
 
     call("docker compose up --build -d", shell=True)
 
