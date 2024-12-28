@@ -55,6 +55,8 @@ def liberar():
     call("docker rmi -f $(docker images -q)", shell=True)
     call("sudo rm -rf practica_creativa2", shell=True)
     call("rm -f ./details/details.rb", shell=True)
+    call("rm -f ./ratings/ratings.js", shell=True)
+    call("rm -f ./ratings/package.json", shell=True)
 
 comando = sys.argv[1]
 
