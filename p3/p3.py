@@ -24,8 +24,9 @@ def crear():
     call("docker build --build-arg service_version=v2 --build-arg enable_ratings=true --build-arg star_color=black -t reviews/24:v2 practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg/", shell=True)
     call("docker build --build-arg service_version=v3 --build-arg enable_ratings=true --build-arg star_color=red -t reviews/24:v3 practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg/", shell=True)
     
-    call("docker compose up --build", shell=True)
     call("docker compose up -d", shell=True)
+    call("docker compose up --build", shell=True)
+    
 
 def liberar():
     call("docker compose down", shell=True)
