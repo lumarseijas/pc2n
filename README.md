@@ -74,7 +74,7 @@ La aplicación muestra correctamente la interfaz gráfica con el título **"24"*
 
 ![Vista de la aplicación desplegada](p2cpc2n.png)
 ---
-## Segmentación de una Aplicación Monolítica en Microservicios utilizando Docker-Compose
+## 3. Segmentación de una Aplicación Monolítica en Microservicios utilizando Docker-Compose
 
 En esta parte de la práctica, se segmentó la aplicación en microservicios para que cada servicio funcione de manera independiente utilizando Docker-Compose. Además, se añadieron dos servicios adicionales: Reviews y Ratings. La aplicación ahora es "políglota", ya que cada microservicio está desarrollado en un lenguaje diferente.
 
