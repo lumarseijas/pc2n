@@ -194,3 +194,5 @@ Tras ejecutar esto, se abre en el navegador:
 Si clickas en `Normal user`, te lleva a la siguiente pantalla, que es la aplicación:
 
 ![Vista de la aplicación p4](p4pc2n2.png)
+
+Kubernetes facilita y mejora la escalabilidad de aplicaciones construidas con microservicios. Permite definir el número requerido de réplicas para un pod, encargándose de crear o eliminar los pods necesarios para mantener ese número. Asimismo, Kubernetes incluye una función de escalado automático, que ajusta dinámicamente la aplicación según las variaciones en la demanda, sin necesidad de intervención manual. Esto asegura un uso eficiente de los recursos y una alta disponibilidad del sistema.
