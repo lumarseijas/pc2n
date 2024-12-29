@@ -130,7 +130,7 @@ python3 p3.py crear
 Desde el navegador, se realizaron pruebas con las tres versiones del microservicio Reviews, accediendo a:
 
 ```text
-http://192.168.49.1:9080/productpage
+http://<ip-local>:9080/productpage
 ```
 
 Cambiando en el archivo `docker-compose.yaml` la versión de la imagen del microservicio Reviews utilizada, se obtuvieron las siguientes vistas de la aplicación:
