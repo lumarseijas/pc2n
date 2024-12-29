@@ -158,3 +158,39 @@ Cambiando en el archivo `docker-compose.yaml` la versión de la imagen del micro
 3. **Desempeño**:
    - Cada microservicio puede optimizarse de manera individual para sus necesidades específicas.
 
+## 4. Despliegue de una aplicación basada en microservicios utilizando Kubernetes
+En esta parte, hemos desplegado la aplicación utilizando kubernetes.
+En primer lugar, hemos subido las imágenes creadas en el apartado anterior de Docker Compose a un repositorio de Docker-hub. 
+Nos hemos loggeado con docker login, y hemos añadido los comandos:
+
+```text
+docker tag microsercicio/24 lumarseijas/microservicio:latest
+```
+Para las diferentes versiones de reviews ha sido asi:
+```text
+docker tag reviews/24:vX lumarseijas/reviews:vX
+```
+Sustituyendo "X" por cada versión.
+
+### Script
+El script desarrollado automatiza las siguientes tareas:
+
+1. Inicia un clúster de kubernetes con 3 nodos con minikube
+2. Cambia al perfil del clúster recién creado `pc2`
+3. Utiliza kubectl a través de Minikube para aplicar configuraciones de servicios y deployments definidos en el archivo YAML.
+4. Espera a que todos los pods se inicien
+5. Abre la web de productpage
+
+### Ejecución
+El script fue ejecutado en una máquina local utilizando el siguiente comando:
+
+```bash
+python3 p4.py 
+```
+Tras ejecutar esto, se abre en el navegador:
+
+![Vista de lo que se abre en p4](p4pc2n.png)
+
+Si clickas en `Normal user`, te lleva a la siguiente pantalla, que es la aplicación:
+
+![Vista de la aplicación p4](p4pc2n2.png)
