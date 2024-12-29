@@ -1,62 +1,45 @@
 services:
-  productpage: 
+  productpage:
     build:
       context: ./productpage
-      dockerfile: Dockerfile
-    environment:
-      - GROUP_NUMBER=24
     image: productpage/24
     container_name: productpage-24
     ports:
       - "9080:9080"
-    volumes:
-      - ./productpage:/opt/microservices  # Ruta ajustada para corresponder al contexto correcto
+    environment:
+      GROUP_NUMBER: "24"
+    depends_on:
+      - details
+      - ratings
+      - reviews
 
   details:
     build:
       context: ./details
-      dockerfile: Dockerfile
-    environment:
-      - SERVICE_VERSION=v1
-      - ENABLE_EXTERNAL_BOOK_SERVICE=true
-    image: details/24 
+    image: details/24
     container_name: details-24
     ports:
-      - "9081:9080"  # Mapeo de puerto único
-    volumes:
-      - ./details:/opt/microservices
+      - "9081:9080"
+    environment:
+      SERVICE_VERSION: v1
+      ENABLE_EXTERNAL_BOOK_SERVICE: "true"
 
   reviews:
-    build:
-      context: ./practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg
-      dockerfile: Dockerfile
-    environment:
-      - ENABLE_RATINGS=true  # En v1 sería false
-      - SERVICE_VERSION=v3   # Cambiar a v1 o v2 según la versión a probar
-      - STAR_COLOR=red       # En v2 sería black y en v1 no habría estrella
-    image: reviews/24 
+    image: reviews/24:v3  # Cambia segun la version
     container_name: reviews-24
     ports:
-      - "9082:9080"  # Mapeo único por versión
-    volumes:
-      - ./reviews:/opt/microservices
-
+      - "9082:9080"
+    environment:
+      ENABLE_RATINGS: "true" #para v1 es false
+      SERVICE_VERSION: v3  # Cambia según la versión
+      STAR_COLOR: "red" #cambia segun la version, para el resto black
+  
   ratings:
     build:
       context: ./ratings
-      dockerfile: Dockerfile
-    environment:
-      - SERVICE_VERSION=v1
-    image: ratings/24 
+    image: ratings/24
     container_name: ratings-24
     ports:
-      - "9083:9080"  # Mapeo único
-    volumes:
-      - ./ratings:/opt/microservices
-
-volumes:
-  vol-productpage:
-  vol-details:
-  vol-reviews:
-  vol-ratings:
-
+      - "9083:9080"
+    environment:
+      SERVICE_VERSION: v1
