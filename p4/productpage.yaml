@@ -4,7 +4,7 @@ metadata:
   name: productpage
   labels:
     app: productpage
-    service: productpage
+    service: productpage-24
 spec:
   type: LoadBalancer #
   ports:
@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: productpage
-        image: lumarseijas/productpage
+        image: lumarseijas/productpage:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
