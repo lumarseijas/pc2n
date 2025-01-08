@@ -13,7 +13,7 @@ def crear():
     call("sudo docker build -t productpage/24 . ", shell=True)
     # Ejecutar el contenedor
     print("[DEBUG] Ejecutando el contenedor de Docker...")
-    call("sudo docker run --name productpage-24 -p 9080:5060 -e GROUP_NUM=24 -d productpage/24", shell=True)  
+    call("sudo docker run --name productpage-24 -p 9080:5080 -e GROUP_NUM=24 -d productpage/24", shell=True)  
    
 def liberar():
     print("[DEBUG] Liberando recursos...")

@@ -1,6 +1,6 @@
 FROM python:3.7.7-slim
 
-EXPOSE 5060
+EXPOSE 5080
 
 ENV GROUP_NUM=24
 
@@ -16,4 +16,4 @@ RUN pip3 install -r requirements.txt
 
 RUN sed -i "s/Simple\sBookstore\sApp/${GROUP_NUM}/g" templates/productpage.html
 
-CMD ["python3", "productpage_monolith.py", "5060"]
+CMD ["python3", "productpage_monolith.py", "5080"]

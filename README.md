@@ -45,7 +45,7 @@ Hemos definido un fichero `Dockerfile` con las siguientes características:
 - Instala dependencias necesarias como `git` y `pip3`.
 - Clona el repositorio con el código de la aplicación.
 - Configura la variable de entorno `GROUP_NUM` con el valor `24` para personalizar el título de la página.
-- Expone el puerto `5060` y ejecuta la aplicación.
+- Expone el puerto `5080` y ejecuta la aplicación.
 
 ### Script
 Hemos desarrollado un script (`p2.py`) que automatiza el proceso de construcción y ejecución del contenedor Docker con las siguientes funcionalidades:
@@ -53,7 +53,7 @@ Hemos desarrollado un script (`p2.py`) que automatiza el proceso de construcció
 1. **Construcción de la imagen Docker**: Usa el formato `productpage/24`.
 2. **Ejecución del contenedor**:
    - Nombre: `productpage-24`.
-   - Puerto: `5060`.
+   - Puerto: `5080`.
    - Variable de entorno: `GROUP_NUM=24`.
 3. **Liberación de recursos**: Detiene y elimina contenedores e imágenes Docker al finalizar.
 
