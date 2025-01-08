@@ -18,7 +18,7 @@ def crear():
     #cambiar de directorio a /src/reviews
     os.chdir("practica_creativa2/bookinfo/src/reviews")
     call('docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build', shell=True)
-    os.chdir("../..")
+    os.chdir("../../../..")
     # añadir lo de las versiones de reviews
     call("docker build --build-arg service_version=v1 --build-arg enable_ratings=false --build-arg star_color=black -t reviews/24:v1 practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg/", shell=True)
     call("docker build --build-arg service_version=v2 --build-arg enable_ratings=true --build-arg star_color=black -t reviews/24:v2 practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg/", shell=True)
